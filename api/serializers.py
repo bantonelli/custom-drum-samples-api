@@ -10,21 +10,21 @@ class SampleDemoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Sample
-        fields = ('name', 'demo', 'kit', 'type')
+        fields = ('id', 'name', 'demo', 'kit', 'type')
 
 
 class SampleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Sample
-        fields = ('name', 'demo', 'wav', 'kit', 'type')
+        fields = ('id', 'name', 'demo', 'wav', 'kit', 'type')
 
 
 class KitDescriptionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = KitDescription
-        fields = ('selling_point1', 'selling_point2', 'selling_point3', 'author', 'date_created')
+        fields = ('id', 'selling_point1', 'selling_point2', 'selling_point3', 'author', 'date_created')
 
 
 class KitSerializerFull(serializers.ModelSerializer):
@@ -33,7 +33,7 @@ class KitSerializerFull(serializers.ModelSerializer):
 
     class Meta:
         model = Kit
-        fields = ('name', 'new', 'on_sale', 'soundcloud', 'image', 'tags', 'description', 'price', 'sale', 'user_rating', 'samples')
+        fields = ('id', 'name', 'new', 'on_sale', 'soundcloud', 'image', 'tags', 'description', 'price', 'sale', 'user_rating', 'samples')
 
 
 class KitSerializerLimited(serializers.ModelSerializer):
@@ -43,7 +43,7 @@ class KitSerializerLimited(serializers.ModelSerializer):
 
     class Meta:
         model = Kit
-        fields = ('name', 'new', 'on_sale', 'soundcloud', 'image', 'tags', 'description', 'price', 'sale', 'user_rating', 'samples')
+        fields = ('id', 'name', 'new', 'on_sale', 'soundcloud', 'image', 'tags', 'description', 'price', 'sale', 'user_rating', 'samples')
 
 
 class CustomKitSerializer(serializers.ModelSerializer):
@@ -52,7 +52,7 @@ class CustomKitSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomKit
-        fields = ('name', 'user', 'date', 'samples')
+        fields = ('id', 'name', 'user', 'date', 'samples')
 
 
 class CustomKitPurchasedSerializer(serializers.ModelSerializer):
@@ -61,7 +61,7 @@ class CustomKitPurchasedSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomKit
-        fields = ('name', 'user', 'date', 'samples')
+        fields = ('id', 'name', 'user', 'date', 'samples')
 
 
 class CustomKitSerializerCreate(serializers.ModelSerializer):
@@ -69,7 +69,7 @@ class CustomKitSerializerCreate(serializers.ModelSerializer):
 
     class Meta:
         model = CustomKit
-        fields = ('name', 'date', 'user', 'samples')
+        fields = ('id', 'name', 'date', 'user', 'samples')
 
 
 # USER PROFILE
@@ -78,7 +78,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserProfile
-        fields = ('user', 'last_4_digits', 'created_at', 'updated_at', 'custom_kits')
+        fields = ('id', 'user', 'last_4_digits', 'created_at', 'updated_at', 'custom_kits')
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -87,12 +87,3 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'profile')
-
-
-#KIT DESCRIPTIONS
-
-class KitDescriptionSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = KitDescription
-        fields = ('id', 'selling_point1', 'selling_point2', 'selling_point3', 'author', 'date_created')
