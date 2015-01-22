@@ -119,6 +119,7 @@ STATICFILES_FINDERS = (
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, "templates"),
+    os.path.join(BASE_DIR, "provider/templates"),
 #    os.path.join(BASE_DIR, "templates/registration"),
 #    os.path.join(BASE_DIR, "templates/courses"),
 #    os.path.join(BASE_DIR, "templates/userlogin"),
@@ -139,8 +140,8 @@ MEDIA_URL = '/media/'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.OAuth2Authentication',
-        'rest_framework.authentication.SessionAuthentication',
+        #'rest_framework.authentication.OAuth2Authentication',
+        #'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_THROTTLE_CLASSES': (
         'rest_framework.throttling.AnonRateThrottle',

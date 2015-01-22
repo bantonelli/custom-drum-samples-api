@@ -80,7 +80,7 @@ class KitList(generics.ListAPIView):
     """
     List all Drum Kits
     """
-    permission_classes = (permissions.IsAuthenticated, )
+    #permission_classes = (permissions.IsAuthenticated, )
     required_scopes = ['read']
     queryset = Kit.objects.all()
     serializer_class = KitSerializerLimited
@@ -117,7 +117,7 @@ class UserList(generics.ListAPIView):
     permission_classes = (permissions.IsAdminUser, )
     required_scopes = ['read']
     queryset = User.objects.all()
-    serializer_class = UserSerializer(read_only=True)
+    serializer_class = UserSerializer
 
 
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -125,3 +125,14 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (permissions.IsAuthenticated, IsUser, )
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+#KIT DESCRIPTIONS (USE FOR QUICK TESTING)
+class KitDescriptionList(generics.ListAPIView):
+    #permission_classes = (permissions.IsAdminUser, )
+    required_scopes = ['read']
+    queryset = KitDescription.objects.all()
+    serializer_class = KitDescriptionSerializer
+
+
+# curl -X POST -d "client_id=21bc3b3e5b430572e41a&grant_type=password&username=brandonantonelli&password=123456" http://127.0.0.1:8000/oauth2/access_token/

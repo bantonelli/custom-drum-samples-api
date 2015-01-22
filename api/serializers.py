@@ -87,3 +87,12 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'profile')
+
+
+#KIT DESCRIPTIONS
+
+class KitDescriptionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = KitDescription
+        fields = ('id', 'selling_point1', 'selling_point2', 'selling_point3', 'author', 'date_created')

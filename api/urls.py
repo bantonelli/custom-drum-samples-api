@@ -16,6 +16,7 @@ urlpatterns = patterns('',
                         url(r'^api/ckits/create/$', views.CustomKitCreate.as_view()), # User accessible
                         url(r'^api/users/$', views.UserList.as_view()),
                         url(r'^api/users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view()), # User accessible
+                        url(r'^api/descriptions/$', views.KitDescriptionList.as_view()), # User accessible
                        )
 
 urlpatterns = format_suffix_patterns(urlpatterns)
