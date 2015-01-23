@@ -41,11 +41,13 @@ INSTALLED_APPS = (
     'userprofile',
     'api',
     'provider',
-    'provider.oauth2'
+    'provider.oauth2',
+    'corsheaders'
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -156,3 +158,21 @@ REST_FRAMEWORK = {
 # NOTE: HAVE TO CHANGE line 491 of provider/views.py in site-packages to use content_type instead of mime_type for this
 # to work in Django 1.7 and later.
 #curl -X POST -d 'client_id=21bc3b3e5b430572e41a&client_secret=ac2ea1b5895e4b3b8ac4e8f425bcb226135d1a04&grant_type=password&username=brandonantonelli&password=123456' 'http://127.0.0.1:8000/oauth2/access_token'
+
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_WHITELIST = (
+    '127.0.0.1:4200',
+    'hostname.example.com'
+)
+
+CORS_ALLOW_METHODS = (
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS'
+)
