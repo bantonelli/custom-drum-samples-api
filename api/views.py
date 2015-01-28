@@ -80,7 +80,7 @@ class KitList(generics.ListAPIView):
     """
     List all Drum Kits
     """
-    #permission_classes = (permissions.IsAuthenticated, )
+    permission_classes = (permissions.IsAuthenticated, )
     required_scopes = ['read']
     queryset = Kit.objects.all()
     serializer_class = KitSerializerLimited
@@ -122,14 +122,16 @@ class UserList(generics.ListAPIView):
 
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     # Make Custom permission so that it checks if is authenticated and is user that owns profile.
-    permission_classes = (permissions.IsAuthenticated, IsUser, )
+    #permission_classes = (permissions.IsAuthenticated, IsUser, )
+    required_scopes = ['read']
+    permission_classes = (permissions.IsAuthenticated, )
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
 #KIT DESCRIPTIONS (USE FOR QUICK TESTING)
 class KitDescriptionList(generics.ListAPIView):
-    #permission_classes = (permissions.IsAdminUser, )
+    permission_classes = (permissions.IsAdminUser, )
     required_scopes = ['read']
     queryset = KitDescription.objects.all()
     serializer_class = KitDescriptionSerializer
