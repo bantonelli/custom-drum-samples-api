@@ -165,7 +165,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = (
     '127.0.0.1:4200',
-    'hostname.example.com'
+    #'hostname.example.com'
 )
 
 CORS_ALLOW_METHODS = (
