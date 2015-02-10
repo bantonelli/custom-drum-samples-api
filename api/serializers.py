@@ -28,8 +28,9 @@ class KitDescriptionSerializer(serializers.ModelSerializer):
 
 
 class KitSerializerFull(serializers.ModelSerializer):
-    samples = SampleSerializer(many=True, read_only=True)
+    samples = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     description = KitDescriptionSerializer(read_only=True)
+    image = serializers.Field('image.url')
 
     class Meta:
         model = Kit
@@ -37,9 +38,10 @@ class KitSerializerFull(serializers.ModelSerializer):
 
 
 class KitSerializerLimited(serializers.ModelSerializer):
-    samples = SampleSerializer(many=True, read_only=True)
-    #samples = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    #samples = SampleSerializer(many=True, read_only=True)
+    samples = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     description = KitDescriptionSerializer(read_only=True)
+    image = serializers.Field('image.url')
 
     class Meta:
         model = Kit
