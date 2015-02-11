@@ -24,7 +24,7 @@ class KitDescriptionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = KitDescription
-        fields = ('id', 'selling_point1', 'selling_point2', 'selling_point3', 'author', 'date_created')
+        fields = ('id', 'selling_point1', 'selling_point2', 'selling_point3', 'selling_point1_title', 'selling_point2_title', 'selling_point3_title', 'number_of_samples', 'author', 'date_created')
 
 
 class TagSerializer(serializers.ModelSerializer):
