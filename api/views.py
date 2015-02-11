@@ -50,18 +50,6 @@ class LogInView(View):
         return HttpResponse(urllib2.urlopen(req))
 
 #SOUND SAMPLE
-class SampleList(generics.ListCreateAPIView):
-    permission_classes = (permissions.IsAdminUser,)
-    queryset = Sample.objects.all()
-    serializer_class = SampleSerializer
-
-
-class SampleDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (permissions.IsAdminUser,)
-    queryset = Sample.objects.all()
-    serializer_class = SampleSerializer
-
-
 class SampleDemoList(generics.ListAPIView):
     permission_classes = (permissions.IsAuthenticated,)
     required_scopes = ['read']
@@ -83,13 +71,13 @@ class KitList(generics.ListAPIView):
     permission_classes = (permissions.IsAuthenticated, )
     required_scopes = ['read']
     queryset = Kit.objects.all()
-    serializer_class = KitSerializerLimited
+    serializer_class = KitSerializer
 
 
-class KitDetail(generics.RetrieveUpdateDestroyAPIView):
+class KitDetail(generics.RetrieveAPIView):
     permission_classes = (permissions.IsAdminUser, )
     queryset = Kit.objects.all()
-    serializer_class = KitSerializerFull
+    serializer_class = KitSerializer
 
 
 #CUSTOM KIT
@@ -105,12 +93,6 @@ class CustomKitDetail(generics.RetrieveDestroyAPIView):
     required_scopes = ['read']
     queryset = CustomKit.objects.all()
     serializer_class = CustomKitPurchasedSerializer
-
-
-class CustomKitCreate(generics.CreateAPIView):
-    permission_classes = (permissions.IsAuthenticated, )
-    serializer_class = CustomKitSerializerCreate
-
 
 #USER
 class UserList(generics.ListAPIView):

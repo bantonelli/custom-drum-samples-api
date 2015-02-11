@@ -54,6 +54,10 @@ class KitDescription (CommonInfo):
     selling_point1 = models.TextField(blank=True)
     selling_point2 = models.TextField(blank=True)
     selling_point3 = models.TextField(blank=True)
+    selling_point1_title = models.CharField(max_length=50, blank=True)
+    selling_point2_title = models.CharField(max_length=50, blank=True)
+    selling_point3_title = models.CharField(max_length=50, blank=True)
+    number_of_samples = models.IntegerField(default=0)
     author = models.CharField(max_length=50, blank=True)
     date_created = models.CharField(max_length=50, blank=True)
 
@@ -114,6 +118,7 @@ class CustomKit(CommonInfo):
     user = models.ForeignKey(UserProfile, related_name='custom_kits')
     date = models.DateField(auto_now_add=True)
     samples = models.ManyToManyField(Sample)
+    tags = models.ManyToManyField(Tag)
 
 
 ######## SIGNALS (for model deletion etc.)

@@ -27,21 +27,18 @@ class KitDescriptionSerializer(serializers.ModelSerializer):
         fields = ('id', 'selling_point1', 'selling_point2', 'selling_point3', 'author', 'date_created')
 
 
-class KitSerializerFull(serializers.ModelSerializer):
-    samples = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    description = KitDescriptionSerializer(read_only=True)
-    image = serializers.Field('image.url')
+class TagSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Kit
-        fields = ('id', 'name', 'new', 'on_sale', 'soundcloud', 'image', 'tags', 'description', 'price', 'sale', 'user_rating', 'samples')
+        model = Tag
+        fields = ('id', 'name')
 
 
-class KitSerializerLimited(serializers.ModelSerializer):
-    #samples = SampleSerializer(many=True, read_only=True)
+class KitSerializer(serializers.ModelSerializer):
     samples = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     description = KitDescriptionSerializer(read_only=True)
     image = serializers.Field('image.url')
+    tags = TagSerializer(read_only=True)
 
     class Meta:
         model = Kit
@@ -51,27 +48,21 @@ class KitSerializerLimited(serializers.ModelSerializer):
 class CustomKitSerializer(serializers.ModelSerializer):
     samples = serializers.PrimaryKeyRelatedField(many=True)
     user = serializers.CharField(read_only=True, source='user.user.username')
+    tags = TagSerializer(read_only=True)
 
     class Meta:
         model = CustomKit
-        fields = ('id', 'name', 'user', 'date', 'samples')
+        fields = ('id', 'name', 'user', 'date', 'samples', 'tags')
 
 
 class CustomKitPurchasedSerializer(serializers.ModelSerializer):
-    samples = SampleSerializer(many=True, read_only=True)
+    samples = serializers.PrimaryKeyRelatedField(many=True)
     user = serializers.CharField(read_only=True, source='user.user.username')
+    tags = TagSerializer(read_only=True)
 
     class Meta:
         model = CustomKit
-        fields = ('id', 'name', 'user', 'date', 'samples')
-
-
-class CustomKitSerializerCreate(serializers.ModelSerializer):
-    samples = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-
-    class Meta:
-        model = CustomKit
-        fields = ('id', 'name', 'date', 'user', 'samples')
+        fields = ('id', 'name', 'user', 'date', 'samples', 'tags')
 
 
 # USER PROFILE
