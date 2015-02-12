@@ -7,6 +7,7 @@ from userprofile.models import UserProfile, User
 
 # KIT BUILDER
 class SampleDemoSerializer(serializers.ModelSerializer):
+    demo = serializers.Field('demo.url')
 
     class Meta:
         model = Sample
@@ -14,6 +15,7 @@ class SampleDemoSerializer(serializers.ModelSerializer):
 
 
 class SampleSerializer(serializers.ModelSerializer):
+    demo = serializers.Field('demo.url')
 
     class Meta:
         model = Sample
